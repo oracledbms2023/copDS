@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jupyter Notebook</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="flex">
+    <button id="copyButton1">copy 1</button> <span id="copyResult1"></span>
+    <button id="copyButton2">copy 2</button> <span id="copyResult2"></span>
+    <button id="copyButton3">copy 3</button> <span id="copyResult3"></span>
+    <button id="copyButton4">copy 4</button> <span id="copyResult4"></span>
+    <button id="copyButton5">copy 5</button> <span id="copyResult5"></span>
+    <button id="copyButton6">copy 6</button> <span id="copyResult6"></span>
+</div>
+
+<pre id="textToCopy1">
+    #include stdio.h>
+        #include stdlib.h>
+       int a[20],n,val,i,pos;
+       void create();
+       void display();
+       void insert();
+       void delete();
+       int main()
+      {
+            int choice=1;
+            while(choice)
+            {
+    printf("\n\n---------------MENU ---------------\n");
+                    printf("1.CREATE\N");
+                    printf(" 2.DISPLAY\N");
+                    printf(" 3.INSERT\N");
+                    printf(" 4.DELETE\N");
+                    printf(" 5.EXIT\N");
+                    printf("-----------------------------------------");
+                    printf("\nENTER YOUR CHOICE:\t");
+                    scanf("%d",&choice);
+                    switch(choice)
+                    {
+    case 1: create();
+                                    break;
+                        case 2: display();
+                                    break;
+                        case 3: insert();
+                                    break;
+                        case 4: delete();
+                                    break;
+                        case 5: exit(0);
+                        default: printf("\n Invalid choice:\n");
+                                    break;
+    }
+    
+            }
+            return 0;
+      }
+      void create()
+      {
+            printf("\nEnter the size of the array elements:\t");
+            scanf("%d",&n);
+            printf("\nEnter the elements for the array:\n");
+            for(i=0;ilessn;i++)
+            {
+                scanf("%d",&a[i]);
+            }
+      }
+      void display()
+      {
+            int i;
+            printf("\nThe array elements are:\n");
+            for(i=0;ilessn;i++)
+            {
+                    printf("%d\t",a[i]);
+            }
+      }
+      void insert()
+      {
+            printf("\nEnter the position for the new element:\t");
+            scanf("%d",&pos);
+            printf("\nEnter the element to be inserted:\t");
+            scanf("%d",&val);
+            for(i=n-1;i>=pos;i--)
+            {
+                    a[i+1]-a[i];
+    }
+            a[pos]=val;
+            n=n+1;
+      }
+      void delete()
+      {
+          printf("\nEnter the position of the element to be deleted:\t");
+            scanf("%d",&pos);
+            val=a[pos];
+            for(i=pos;ilessn-1;i++)
+            {
+                    a[i]=a[i+1];
+            }
+            n=n+1;
+            printf("\nThe deleted element is=%d",val);
+     }
+    
+    
+    
+    
+     
+               
+</pre>
+
+<h4>lab 2</h4>
+<pre id="textToCopy2">
+        #include stdio.h>
+        char str[50], pat[20], rep[20], ans[50];
+        int    c=0, m=0, i=0, j=0, k, flag=0;
+        void stringmatch()
+        {
+             while(str[c] !='\0')
+             {
+                  if(str[m] == pat[i])
+                        {
+                              i++;
+                                  m++;
+                                  if(pat[i] == '\0')
+                                  {
+                                       flag = 1;
+                                            for(k=0; rep[k]!='\0'; k++, j++)
+                                            {
+                                                 ans[j] = rep[k];
+                                             }
+                                             i = 0;
+                                             c = m;
+                                  }
+                          }
+                          else
+                         {
+                              ans[j]= str[c];
+                                  j++;
+                                  c++;
+                                    m=c;
+                                    i=0;
+                           }
+              }
+        }
+        void main()
+        {
+                        printf("\nEnter the main string:");
+                        gets(str);
+                        printf("\nEnter the pat string:");
+                        gets(pat);
+                        printf("\nEnter the replace string:");
+                        gets(rep);
+                        stringmatch();
+                        if(flag == 1)
+                                        printf("\nResultant string is %s", ans);
+                        else
+                                        printf("\nPattern string is not found");
+        }
+        
+         
+              
+</pre>
+
+<h4>lab 3</h4>
+<pre id="textToCopy3">
+        #includestdio.h>
+        #includestdlib.h>
+        #define MAX 5
+        int s[MAX];
+        int top = -1;
+        
+        void push(int item);
+        int pop();
+        void palindrome();
+        void display();
+        
+        void main()
+        {
+                  int choice, item;
+                   while(1)
+                    {
+                                printf("\n\n\n\n~~~~~~Menu~~~~~~ : ");
+                                printf("\n=>1.Push an Element to Stack and Overflow demo ");
+                                printf("\n=>2.Pop an Element from Stack and Underflow demo");
+                                printf("\n=>3.Palindrome demo ");
+                                printf("\n=>4.Display ");
+                                printf("\n=>5.Exit");
+                                printf("\nEnter your choice: ");
+                                scanf("%d", &choice);
+                                switch(choice)
+                                {
+                                            case 1:             printf("\nEnter an element to be pushed: ");
+                                                                    scanf("%d", &item);
+                                                                    push(item);
+                                                                    break;
+                                            case 2:             item = pop();
+                                                                    if(item != -1)
+                                                                    printf("\nElement popped is: %d", item);
+                                                                    break;
+                                            case 3:             palindrome();
+                                                                    break;
+                                            case 4:             display();
+                                                                    break;
+                                            case 5:             exit(1);
+                                            default:            printf("\nPlease enter valid choice ") ;
+                                                                    break;
+                            }
+                    }
+        }
+        
+        void push(int item)
+        {
+                    if(top == MAX-1)
+                    {
+                                printf("\n~~~~Stack overflow~~~~");
+                                return;
+                    }
+        
+                    top = top + 1 ;
+                    s[top] = item;
+        }
+        
+        int pop()
+        {
+                    int item;
+                    if(top == -1)
+                    {
+                                printf("\n~~~~Stack underflow~~~~");
+                                return -1;
+                    }
+                    item = s[top];
+                    top = top - 1;
+                    return item;
+        }
+        
+        void display()
+        {
+                    int i;
+                    if(top == -1)
+                    {
+                                printf("\n~~~~Stack is empty~~~~");
+                                return;
+                    }
+                    printf("\nStack elements are:\n ");
+                    for(i=top; i>=0 ; i--)
+                                printf("| %d |\n", s[i]);
+        }
+        
+        void palindrome()
+        {
+                    int flag=1,i;
+                    printf("\nStack content are:\n");
+                    for(i=top; i>=0 ; i--)
+                                printf("| %d |\n", s[i]);
+        
+                    printf("\nReverse of stack content are:\n");
+                    for(i=0; iless=top; i++)
+                                printf("| %d |\n", s[i]);
+        
+                    for(i=0; iless=top/2; i++)
+                    {
+                                if( s[i] != s[top-i] )
+                                {
+                                            flag = 0;
+                                            break;
+                                }
+                    }
+                    if(flag == 1)
+                    {
+                                printf("\nIt is palindrome number");
+                    }
+                    else
+                    {
+                                printf("\nIt is not a palindrome number");
+                    }
+        }
+        
+              
+</pre>
+
+<h4>lab 4</h4>
+<pre id="textToCopy4">
+        #includestdio.h>
+        #includestdlib.h>
+        void evaluate();
+        void push(char);
+        char pop();
+        int prec(char);
+        char infix[30], postfix[30], stack[30];
+        int top = -1;
+        void main()
+        {
+                    printf("\nEnter the valid infix expression:\t");
+                    scanf("%s", infix);
+                    evaluate();
+                    printf("\nThe entered infix expression is :\n %s \n", infix);
+                    printf("\nThe corresponding postfix expression is :\n %s \n", postfix);
+        }
+        void evaluate()
+        {
+                    int i = 0, j = 0;
+                    char symb, temp;
+        push('#');
+        for(i=0; infix[i] != '\0'; i++)
+                    {
+                                 symb = infix[i];
+                                switch(symb)
+                                {
+                                            case '(' :            push(symb);
+                                                                    break;
+        
+                                            case ')' :            temp = pop();
+                                                                    while(temp != '(' )
+                                                                    {
+                                                                                postfix[j] = temp;
+                                                                                j++;
+                                                                                temp = pop();
+                                                                    }
+                                                                    break;
+                                            case '+' :
+                                            case '-' :
+                                            case '*' :
+                                            case '/' :
+                                            case '%' :
+                                            case '^' :
+                                            case '$'  :          while( prec(stack[top]) >= prec(symb) )
+                                                                    {
+                                                                                temp = pop();
+                                                                                postfix[j] = temp;
+                                                                                j++;
+                                                                    }
+                                                                    push(symb);
+                                                                    break;
+                                            default:            postfix[j] = symb;
+                                                                    j++;
+                                 }
+                    }
+                    while(top > 0)
+                    {
+                                temp = pop();
+                                postfix[j] = temp;
+                                j++;
+                    }
+                    postfix[j] = '\0';
+        }
+        
+         void push(char item)
+        {
+                    top = top+1;
+                    stack[top] = item;
+        }
+        
+         char pop()
+        {
+                    char item;
+                    item = stack[top];
+                    top = top-1;
+                    return item;
+        }
+        
+        int prec(char symb)
+        {
+                    int p;
+                    switch(symb)
+                    {
+                                case '#' :           p = -1;
+                                                        break;
+        
+                                case '(' :
+                                case ')' :            p = 0;
+                                                        break;
+        
+                                case '+' :
+                                case '-' :            p = 1;
+                                                        break;
+        
+                                case '*' :
+                                case '/' :
+                                case '%' :          p = 2;
+                                                        break;
+        
+                                case '^' :
+                                case '$' :           p = 3;
+                                                        break;
+                    }
+                    return p;
+        }
+        
+        
+     
+</pre>
+
+<h4>lab 5</h4>
+<pre id="textToCopy5">
+        #includestdio.h>
+        #includemath.h>
+        #includestring.h>
+        float compute(char symbol, float op1, float op2)
+        {
+            switch (symbol)
+            {
+            case '+':
+                return op1 + op2;
+            case '-':
+                return op1 - op2;
+            case '*':
+                return op1 * op2;
+            case '/':
+                return op1 / op2;
+            case '$':
+            case '^':
+                return pow(op1,op2);
+            default :
+                return 0;
+            }
+        }
+        void main()
+        {
+            float s[20], res, op1, op2;
+            int top, i;
+            char postfix[20], symbol;
+            printf("\nEnter the postfix expression:\n");
+            scanf ("%s", postfix);
+            top=-1;
+            for (i=0; i less strlen(postfix) ; i++)
+            {
+                symbol = postfix[i];
+                if(isdigit(symbol))
+                    s[++top]=symbol - '0';
+                else
+                {
+                    op2 = s[top--];
+                    op1 = s[top--];
+                    res = compute(symbol,op1, op2);
+                    s[++top] = res;
+                }
+            }
+            printf("\nThe result is : %f\n", res);
+        }
+        
+   
+</pre>
+
+<h4>lab 6</h4>
+<pre id="textToCopy6">
+        #includestdio.h>
+        #includeconio.h>
+        
+        
+        int search(int item, int a[], int n) {
+            int low, high, key, mid;
+            low = 0;
+            high = n - 1;
+            key = item;
+        
+            while (low less= high) {
+                mid = (low + high) / 2;
+        
+                if (key == a[mid]) {
+                    return mid;
+                }
+        
+                if (key less a[mid])
+                    high = mid - 1;
+                else
+                    low = mid + 1;
+            }
+        
+            return -1;
+        }
+        
+        void main() {
+            int i, item, a[10], n, pos;
+        
+        
+            printf("Enter the size of an Array\n");
+            scanf("%d", &n);
+        
+            printf("Enter the Array Elements\n");
+            for (i = 0; i less n; i++)
+                scanf("%d", &a[i]);
+        
+            printf("The Array Elements are\n");
+            for (i = 0; i less n; i++)
+                printf("%d\n", a[i]);
+        
+            printf("Enter the Element to be searched\n");
+            scanf("%d", &item);
+        
+            pos = search(item, a, n);
+        
+            if (pos == -1)
+                printf("Item not found\n");
+            else
+                printf("Item found at index %d\n", pos);
+        
+            getch();
+        }
+        
+</pre>
+
+
+<script src="script.js"></script>
+</body>
+</html>
